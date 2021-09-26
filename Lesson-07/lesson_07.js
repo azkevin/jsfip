@@ -15,7 +15,7 @@ console.log(`String with interpolated values: ${num}`); // backticks
 console.log('I see ' + 3 + ' monkeys');
 console.error("this is an error message!"); // printing error info
 
-var assert = require('assert');
+var assert = require('assert'); // node.js assert module
 assert.equal(7 + 1, 8); // if expected is different, it throws an error
 assert.equal(10 / 4, 2.5);
 assert.equal(10n / 4n, 2n); // no floats so rounds down
