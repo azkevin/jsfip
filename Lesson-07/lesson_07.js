@@ -31,7 +31,6 @@ function add1(a, b) {
     return a + b;
 }
 assert.equal(add1(5, 2), 7);
-
 const add2 = (a, b) => { return a + b };
 const add3 = (a, b) => a + b; // arrow function expressions instead of functions
 assert.equal(add2(5, 2), 7);
@@ -72,4 +71,34 @@ class Person { // classes
     }
 }
 class Employee extends Person { // inheritance
+    constructor(name, title) {
+        super(name);
+        this.title = title;
+    }
+    describe() {
+        return super.describe() + ` (${this.title})`;
+    }
 }
+const jane = new Employee('Jane', 'CTO');
+console.log(jane.describe());
+
+function throwsException() { // exception handling in Node.js
+    throw new Error('Throwing a test exception.');
+}
+function catchesException() {
+    try {
+        throwsException();
+    } catch (err) {
+        assert.ok(err instanceof Error);
+        console.log(err.message);
+    }
+}
+catchesException();
+
+arr.map((_x, i) => i); // starts with _ means parameter is not used
+// this._value = value; // starts with _ means property is considered private
+
+const ε = 0.0001; // legal identifiers/variable names
+const строка = '';
+let _tmp = 0;
+const $foo2 = true;
