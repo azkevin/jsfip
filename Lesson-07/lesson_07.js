@@ -1,3 +1,4 @@
+// 7.1.1 //
 // single-line comment
 /*
 Comment with
@@ -10,17 +11,17 @@ false;
 17n; // bigints for integers larger than 53 bits
 -49n;
 
-const num = 42;
-console.log(`String with interpolated values: ${num}`); // backticks
-console.log('I see ' + 3 + ' monkeys');
-console.error("this is an error message!"); // printing error info
-
 var assert = require('assert'); // node.js assert module
 assert.equal(7 + 1, 8); // if expected is different, it throws an error
 assert.equal(10 / 4, 2.5);
 assert.equal(10n / 4n, 2n); // no floats so rounds down
 assert.equal('abc' === 'abc', true); // use strict equality instead of ==
 assert.equal('abc' !== 'def', true);
+
+const num = 42;
+console.log(`String with interpolated values: ${num}`); // backticks
+console.log('I see ' + 3 + ' monkeys');
+console.error("this is an error message!"); // printing error info
 
 const x = 8;
 // x = 9; // causes a TypeError because const creates immutable var bindings
@@ -57,6 +58,7 @@ if (arr.length === 4) {
     console.log(test);
 }
 
+// 7.1.3 //
 class Person { // classes
     constructor(name) {
         this.name = name;
@@ -82,6 +84,7 @@ class Employee extends Person { // inheritance
 const jane = new Employee('Jane', 'CTO');
 console.log(jane.describe());
 
+// 7.1.4 //
 function throwsException() { // exception handling in Node.js
     throw new Error('Throwing a test exception.');
 }
@@ -95,10 +98,23 @@ function catchesException() {
 }
 catchesException();
 
+// 7.1.8 //
 arr.map((_x, i) => i); // starts with _ means parameter is not used
 // this._value = value; // starts with _ means property is considered private
 
+// 7.3.1 //
 const ε = 0.0001; // legal identifiers/variable names
 const строка = '';
 let _tmp = 0;
 const $foo2 = true;
+
+// 7.4 //
+let myStr = 'Yes'; // statement: performs some kind of action
+let myBool = true || false; // expression: produces a value
+function bar() {
+    'ab' + 'cd', Number('123');
+}
+function f() {
+    console.log(bar()); // bar() is an expression
+    bar(); // bar(); is an expression statement
+}
