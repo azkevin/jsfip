@@ -118,3 +118,38 @@ function f() {
     console.log(bar()); // bar() is an expression
     bar(); // bar(); is an expression statement
 }
+
+// 7.5 //
+// if a statement starts with 'function', is it a function declaration or function expression?
+function id(x) { // function declaration
+    return x;
+}
+const id2 = function me(x) { // function expression (right side of = )
+    return x;
+};
+// if a statement starts with '{', is it a object literal or a code block?
+const obj2 = {}; // object literal
+{} // empry code block (a statement)
+(function (x) { console.log(x) })('abc'); // wrap in () for JS to interpret as an expression
+
+// 7.6 //
+const func = () => {}; // ends with a semicolon because it's an embedded arrow function expression
+while (_tmp > 0); // loops can have an empty body by just adding a ;
+
+// 7.7 //
+// one possible pitfall of not using ASI and writing ;. JS protects against accidently returning a value after return
+return // return;
+{
+    first: 'jane' // first: 'jane';
+};
+// ;
+// several pitfalls relying on ASI, ex. is unintended function call. always write semicolons.
+a = b + c // a = b + c(d + e).print();
+(d + e).print()
+
+// 7.9 //
+// put 'use strict'; on the top to switch to strict mode, generally recommended.
+function functionInStrictMode() { // can also enable strict mode just for one function
+    'use strict';
+}
+functionInStrictMode();
