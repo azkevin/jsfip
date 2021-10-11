@@ -152,4 +152,26 @@ a = b + c // a = b + c(d + e).print();
 function functionInStrictMode() { // can also enable strict mode just for one function
     'use strict';
 }
-functionInStrictMode();
+
+// TODO: strict mode not working
+function sloppyFunc() {
+    undeclaredVar1 = 123; // created global variable `undeclaredVar1`
+    {
+        function foo() { return 123 }
+    }
+    return foo();
+    true.prop = 1; // fails silently
+    return true.prop;
+}
+sloppyFunc();
+console.log(undeclaredVar1)
+function strictFunc() {
+    'use strict';
+    undeclaredVar2 = 123; // 7.9.2.1 throws a ReferenceError, does not create global var
+    {
+        function foo() { return 123 }
+    }
+    return foo(); // 7.9.2.2 throws a ReferenceError, functions are block-scoped
+    true.prop = 1; // 7.9.2.3 throws a TypeError, changing immutable data
+}
+strictFunc()
